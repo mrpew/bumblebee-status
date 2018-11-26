@@ -2,9 +2,9 @@
 	"defaults": {
 		"padding": " "
 	},
-	"memory": { "prefix": "ram" },
-	"cpu": { "prefix": "cpu" },
-	"disk": { "prefix": "hdd" },
+	"memory": { "prefix": "⛃" },
+	"cpu": { "prefix": "❂" },
+	"disk": { "prefix": "⛁" },
 	"dnf": { "prefix": "dnf" },
 	"brightness": { "prefix": "o" },
 	"cmus": {
@@ -19,48 +19,48 @@
 		"repeat-off": { "prefix": "[r]" }
 	},
 	"pasink": {
-		"muted": { "prefix": "audio(mute)" },
-		"unmuted": { "prefix": "audio" }
+		"muted": { "prefix": "♬" },
+		"unmuted": { "prefix": "♬" }
 	},
 	"amixer": {
-		"muted": { "prefix": "audio(mute)" },
-		"unmuted": { "prefix": "audio" }
+		"muted": { "prefix": "♬" },
+		"unmuted": { "prefix": "♬" }
 	},
 	"pasource": {
-		"muted": { "prefix": "mic(mute)" },
-		"unmuted": { "prefix": "mic" }
+		"muted": { "prefix": "○" },
+		"unmuted": { "prefix": "●" }
 	},
 	"nic": {
-		"wireless-up": { "prefix": "wifi" },
-		"wireless-down": { "prefix": "wifi" },
-		"wired-up": { "prefix": "lan" },
-		"wired-down": { "prefix": "lan" },
-		"tunnel-up": { "prefix": "tun" },
-		"tunnel-down": { "prefix": "tun" }
+		"wireless-up": { "prefix": "" },
+		"wireless-down": { "prefix": "" },
+		"wired-up": { "prefix": "" },
+		"wired-down": { "prefix": "" },
+		"tunnel-up": { "prefix": "" },
+		"tunnel-down": { "prefix": "" }
 	},
 	"battery": {
-		"charged": { "suffix": "full" },
-		"charging": { "suffix": "chr" },
-		"AC": { "suffix": "ac" },
+		"charged": { "suffix": "" },
+		"charging": { "suffix": "➕" },
+		"AC": { "suffix": "⚡" },
 		"discharging-10": {
-			"prefix": "!",
-			"suffix": "dis"
+			"prefix": "⚠",
+			"suffix": "➖"
 		},
-		"discharging-25": { "suffix": "dis" },
-		"discharging-50": { "suffix": "dis" },
-		"discharging-80": { "suffix": "dis" },
-		"discharging-100": { "suffix": "dis" },
-		"unknown-25": { "suffix": "?" },
-		"unknown-50": { "suffix": "?" },
-		"unknown-80": { "suffix": "?" },
-		"unknown-100": { "suffix": "?" }
+		"discharging-25": { "suffix": "➖" },
+		"discharging-50": { "suffix": "➖" },
+		"discharging-80": { "suffix": "➖" },
+		"discharging-100": { "suffix": "➖" },
+		"unknown-25": { "suffix": "❔" },
+		"unknown-50": { "suffix": "❔" },
+		"unknown-80": { "suffix": "❔" },
+		"unknown-100": { "suffix": "❔" }
 	},
 	"battery_all": {
 		"charged": { "suffix": "full" },
 		"charging": { "suffix": "chr" },
 		"AC": { "suffix": "ac" },
 		"discharging-10": {
-			"prefix": "!",
+			"prefix": "❕",
 			"suffix": "dis"
 		},
 		"discharging-25": { "suffix": "dis" },
@@ -109,16 +109,16 @@
 		"prefix": "hipchat"
 	},
 	"spotify": {
-		"prefix": ""
+		"prefix": "♫"
 	},
 	"uptime": {
-        "prefix": "uptime"
+        "prefix": "⧍"
 	},
 	"zpool": {
 		"poolread": {"prefix": "pool read "},
 		"poolwrite": {"prefix": "pool write "},
 		"ONLINE": {"prefix": "pool"},
-		"FAULTED": {"prefix": "pool (!)"},
-		"DEGRADED": {"prefix": "pool (!)"}
+		"FAULTED": {"prefix": "pool (❕)"},
+		"DEGRADED": {"prefix": "pool (❕)"}
 	}
 }
