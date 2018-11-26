@@ -157,7 +157,7 @@ class Module(bumblebee.engine.Module):
         )
         engine.input.register_callback(self, button=bumblebee.input.LEFT_MOUSE,
             cmd=self._onClick)
-    
+
     def _onClick(self,*args,**kwargs):
         logging.debug("onClick")
         showGuiCreateReminder()
@@ -175,13 +175,9 @@ class Module(bumblebee.engine.Module):
                 rtext = [l.strip() for l in rem.readlines()]
                 date = dt.strptime(rtext[0],"%Y-%m-%d %H:%M:%S.%f")
                 now = dt.now()
-                delta = date - now
                 if date < now:
                     fire=True
             if fire:
                 remove(re_path)
                 showReminder(rtext[1])
-
-
-                
 
