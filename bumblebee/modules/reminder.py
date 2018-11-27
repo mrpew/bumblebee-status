@@ -154,21 +154,57 @@ def showReminder(text):
 # Bumblebee module class
 class Module(bumblebee.engine.Module):
     def __init__(self, engine, config):
-        self.cnt=0
+        self.stopwatch = { 'shown': False,'running': False, 'start': dt.now(), 'end': dt.now(), 'text': "00:00:00" }
+        self.cnt = 0
         super(Module, self).__init__(engine, config,
             bumblebee.output.Widget(full_text=self._text)
         )
         engine.input.register_callback(self, button=bumblebee.input.LEFT_MOUSE,
             cmd=self._onClick)
+        engine.input.register_callback(self, button=bumblebee.input.RIGHT_MOUSE,
+            cmd=self._toggleStopwatch)
+        engine.input.register_callback(self, button=bumblebee.input.MIDDLE_MOUSE,
+            cmd=self._toggleShowStopwatch)
 
     def _onClick(self,*args,**kwargs):
         logging.debug("onClick")
         showGuiCreateReminder()
 
+    def _toggleStopwatch(self,*args,**kwargs):
+        logging.debug("togglestopwatch")
+        if not self.stopwatch['running']:
+            self.stopwatch['shown'] = True
+            self.stopwatch['running'] = True
+            self.stopwatch['start'] = dt.now()
+            self.stopwatch['end'] = None
+        elif self.stopwatch['running']:
+            self.stopwatch['running'] = False
+            self.stopwatch['end'] = dt.now()
+    
+    def _toggleShowStopwatch(self,*args,**kwargs):
+        self.stopwatch['shown'] = not self.stopwatch['shown']
+    
+
     def _text(self,*args,**kwargs):
-        return f'⏰ {self.cnt}'
+        txt = f'⏰ {self.cnt}'
+        if self.stopwatch['shown']:
+            txt += " (" +self.stopwatch['text'] + ")"
+        return txt
 
     def update(self,*args,**kwargs):
+        if self.stopwatch['shown']:
+            if self.stopwatch['running']:
+                delta = dt.now() - self.stopwatch['start']
+            else:
+                delta = self.stopwatch['end'] - self.stopwatch['start']
+            s = delta.seconds
+            hours, remainder = divmod(s, 3600)
+            minutes, seconds = divmod(remainder, 60)
+            seconds = int(seconds)
+            minutes = int(minutes)
+            hours = int(hours)
+            self.stopwatch['text'] = f'{hours:02}:{minutes:02}:{seconds:02}'
+
         reminders = [f for f in listdir(path) if f[0:2]=='r-']
         self.cnt = len(reminders)
         for re in reminders:
