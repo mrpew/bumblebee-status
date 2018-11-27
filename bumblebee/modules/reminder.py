@@ -156,15 +156,10 @@ class Module(bumblebee.engine.Module):
     def __init__(self, engine, config):
         self.stopwatch = { 'shown': False,'running': False, 'start': dt.now(), 'end': dt.now(), 'text': "00:00:00" }
         self.cnt = 0
-        super(Module, self).__init__(engine, config,
-            bumblebee.output.Widget(full_text=self._text)
-        )
-        engine.input.register_callback(self, button=bumblebee.input.LEFT_MOUSE,
-            cmd=self._onClick)
-        engine.input.register_callback(self, button=bumblebee.input.RIGHT_MOUSE,
-            cmd=self._toggleStopwatch)
-        engine.input.register_callback(self, button=bumblebee.input.MIDDLE_MOUSE,
-            cmd=self._toggleShowStopwatch)
+        super(Module, self).__init__(engine, config, bumblebee.output.Widget(full_text=self._text))
+        engine.input.register_callback(self, button = bumblebee.input.LEFT_MOUSE,  cmd=self._onClick)
+        engine.input.register_callback(self, button = bumblebee.input.RIGHT_MOUSE, cmd=self._toggleStopwatch)
+        engine.input.register_callback(self, button = bumblebee.input.MIDDLE_MOUSE,cmd=self._toggleShowStopwatch)
 
     def _onClick(self,*args,**kwargs):
         logging.debug("onClick")
