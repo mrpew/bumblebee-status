@@ -103,9 +103,12 @@ class CreateReminderGUI:
     def start(self):
         logging.debug("#start")
         if self.target is not None:
-            logging.debug("new target: "+str(self.target))
-            with open(rand_file(),'w+') as f:
-                f.write(str(self.target))
+            output = str(self.target)
+            if output[-7] != '.':
+                output += ".000000"
+            logging.debug("new target: "+output)                             
+            with open(rand_file(),'w+') as f:                
+                f.write(output)
                 f.write("\n")
                 f.write(self.msg_var.get())
         else:
